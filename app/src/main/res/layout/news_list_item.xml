@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto">
+
+ <data>
+
+  <variable
+   name="article"
+   type="com.gauravgoyal.mvvm_with_testing.service.model.Article" />
+
+  <variable
+   name="callback"
+   type="com.gauravgoyal.mvvm_with_testing.view.callback.OnClickCallback" />
+ </data>
+
+ <android.support.v7.widget.CardView
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginEnd="@dimen/item_horizontal_margin"
+  android:layout_marginStart="@dimen/item_horizontal_margin"
+  android:onClick="@{(v) ->  callback.onClick(v,article)}"
+  android:orientation="horizontal"
+  app:cardUseCompatPadding="true">
+
+  <LinearLayout
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:layout_marginEnd="@dimen/item_horizontal_margin"
+   android:layout_marginStart="@dimen/item_horizontal_margin"
+   android:orientation="vertical"
+   android:padding="5dp">
+
+   <TextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:contentDescription="@string/app_name"
+    android:text="@{article.title}"
+    android:textSize="@dimen/news_text"
+    android:textStyle="bold" />
+
+   <TextView
+    android:id="@+id/author"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@{article.author}"
+    android:textSize="@dimen/news_text" />
+
+   <TextView
+    android:id="@+id/source"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@{article.description}"
+    android:textSize="@dimen/news_text" />
+
+   <TextView
+    android:id="@+id/publishedAt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:dateText="@{article.publishedAt}"
+    android:textSize="@dimen/news_text" />
+  </LinearLayout>
+
+ </android.support.v7.widget.CardView>
+</layout>

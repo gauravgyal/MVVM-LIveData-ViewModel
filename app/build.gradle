@@ -1,0 +1,82 @@
+project.ext {
+    appcompat = "26.1.0"
+    arch = "1.0.0"
+    retrofit = "2.0.2"
+    constraintLayout = "1.0.2"
+}
+
+def NEWS_API_KEY = '"' + NewsApiKey + '"'
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.gauravgoyal.mvvm_with_testing"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "NewsApiKey", NEWS_API_KEY
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // testing libraries
+    testImplementation 'junit:junit:4.12'
+//    androidTestCompile 'com.android.support:support-annotations:25.3.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    androidTestCompile 'org.mockito:mockito-core:2.6.8'
+//    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+
+// views
+    implementation "com.android.support:cardview-v7:$project.appcompat"
+    implementation "com.android.support:recyclerview-v7:$project.appcompat"
+    implementation "com.android.support.constraint:constraint-layout:$project.constraintLayout"
+
+    // lifecycles
+    implementation "android.arch.lifecycle:runtime:$project.arch"
+    implementation "android.arch.lifecycle:extensions:$project.arch"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.arch"
+
+//networking
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
+
+//support
+    implementation "com.android.support:appcompat-v7:$project.appcompat"
+    compile "com.android.support:support-v4:$project.appcompat"
+    compile 'com.android.support:design:25.3.1', {
+        exclude module: 'support-annotations'
+    }
+
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+}

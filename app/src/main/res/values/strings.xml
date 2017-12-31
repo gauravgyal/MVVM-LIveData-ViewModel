@@ -1,0 +1,5 @@
+<resources>
+ <string name="app_name">mvvm-with-testing</string>
+ <string name="loading_news">Loading news</string>
+ <string name="news_list">News list</string>
+</resources>
