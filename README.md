@@ -1,5 +1,6 @@
 A sample project which illustrate uses of MVVM Architecture and LiveData,ViewModel Architecture components.
 It displays list of news in a Recycler view and on click of any news, news will be opened in a WebView.
+https://android.jlelse.eu/android-architecture-pattern-components-mvvm-livedata-viewmodel-lifecycle-544e84e85177?source=friends_link&sk=a009475da1cf62720891f4526eb8ec05
 
 
 ![whatsapp image 2017-12-30 at 12 32 22 pm](https://user-images.githubusercontent.com/14937553/34452211-6d54872a-ed60-11e7-9dcb-1ce503fcedcb.jpeg)
